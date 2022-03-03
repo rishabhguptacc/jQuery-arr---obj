@@ -4,8 +4,8 @@ var products = [{"id":101,"name":"Basket Ball","image":"basketball.png","price":
                 {"id":104,"name":"Table Tennis","image":"table-tennis.png","price":130},
                 {"id":105,"name":"Tennis","image":"tennis.png","price":100}];
 var cart = [];
-var product = {};
-var c101=0, c102=0, c103=0,c104=0, c105=0;
+// var product = {};
+// var c101=0, c102=0, c103=0,c104=0, c105=0;
 
 $(document).ready(function(){
     displayProducts();
@@ -13,21 +13,21 @@ $(document).ready(function(){
     $('.add-to-cart').click(function(){       // .product 
         var pid = $(this).attr("id");
         // console.log(pid);
-        counter(pid);
+        // counter(pid);
         displayCart(pid);
     });
 
 });
 
-function counter(pid){
-    if(pid == 101) c101++;
-    else if(pid == 102) c102++;
-    else if(pid == 103) c103++;
-    else if(pid == 104) c104++;
-    else if(pid == 105) c105++;
+// function counter(pid){
+//     if(pid == 101) c101++;
+//     else if(pid == 102) c102++;
+//     else if(pid == 103) c103++;
+//     else if(pid == 104) c104++;
+//     else if(pid == 105) c105++;
 
-    console.log(c101,c102, c103, c104, c105);
-}
+//     console.log(c101,c102, c103, c104, c105);
+// }
 
 function displayProducts(){
     html = "";
@@ -88,8 +88,8 @@ function displayCart(pid){
     // console.log(product.name);              // working fine
 
 //    ********* adding product to cart
-    addProduct2cart(pid);
-    console.log(cart);              // Not working fine*****
+    // addProduct2cart(pid);
+    // console.log(cart);              // Not working fine*****
 
 
 //    ********* Display product cart
@@ -109,15 +109,16 @@ function displayCart(pid){
 
 function fetchProduct(pid){
 // console.log("pid in fetch product"+ pid);
+    var product = {};
     for(var i=0; i<products.length; i++){
         if(products[i].id == pid){
             var qnty;
             // ****  select the qnty counter  
-            if(pid == 101) {qnty = c101;}
-            else if(pid == 102) {qnty = c102;}
-            else if(pid == 103) {qnty = c103;}
-            else if(pid == 104) {qnty = c104;}
-            else if(pid == 105) {qnty = c105;}
+            // if(pid == 101) {qnty = c101;}
+            // else if(pid == 102) {qnty = c102;}
+            // else if(pid == 103) {qnty = c103;}
+            // else if(pid == 104) {qnty = c104;}
+            // else if(pid == 105) {qnty = c105;}
             
 
 
@@ -130,6 +131,8 @@ function fetchProduct(pid){
        
     }
     // console.log("the product is :"+ product.id+product.name+ product.qty);
+
+
 }
 
 function addProduct2cart(pid){
@@ -153,22 +156,22 @@ function addProduct2cart(pid){
 }
 
 function isExists(pid){
-    if(pid == 101){
-        if(c101>1)
-        {c101++; 
-        return true;}}
-    else if(pid == 102) {if(c102>1)
-        {c102++; 
-        return true;};}
-    else if(pid == 103) {if(c103>1)
-        {c103++; 
-        return true;}}
-    else if(pid == 104) {if(c104>1)
-        {c104++; 
-        return true;}}
-    else if(pid == 105) {if(c105>1)
-        {c105++; 
-        return true;}}
-    else
-    return false;
+    // if(pid == 101){
+    //     if(c101>1)
+    //     {c101++; 
+    //     return true;}}
+    // else if(pid == 102) {if(c102>1)
+    //     {c102++; 
+    //     return true;};}
+    // else if(pid == 103) {if(c103>1)
+    //     {c103++; 
+    //     return true;}}
+    // else if(pid == 104) {if(c104>1)
+    //     {c104++; 
+    //     return true;}}
+    // else if(pid == 105) {if(c105>1)
+    //     {c105++; 
+    //     return true;}}
+    // else
+    // return false;
 }
