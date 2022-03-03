@@ -30,17 +30,32 @@ $(document).ready(function(){
 	  });
 
 
-      $("#qty").on("keyup",function(){
-        console.log($(this).val());
-        //this gives me complete value inserted by user 
-        });
+    //   $("#qty").on("keyup",function(){
+    //     console.log($(this).val());
+    //     //this gives me complete value inserted by user 
+    //     });
 
-    $('#cart').on('keyup','.delete',function(){
-        var value = $(this).val();
-        console.log(value);
+    $('#cart').on('keyup','.qty',function(){
+        var val = $(this).val();
+        var value = parseInt(val);
+        var pid = $(this).data('pid');
+        // console.log(value+pid);
+        updateQuatity(pid,value);
+
+        display();
+
     });
 
 });
+
+
+function updateQuatity(pid,value){
+    for(var i=0; i<cart.length; i++){
+		if(cart[i].id == pid){//console.log(cart[i].id+" "+pid);
+			cart[i].qty = value;
+		}
+	}
+}
 
 function displayProducts(){
     html = "";
@@ -100,7 +115,7 @@ function displayCart(pid){
     fetchProduct(pid);
     
     for(var i=0; i<cart.length; i++){               
-        html += '<tr><td>'+cart[i].id+'</td><td>'+cart[i].name+'</td><td><input type="number" id="qty" name="qty" min="1" value="'+cart[i].qty+'"></td><td><a href="#" class="delete" data-pid='+cart[i].id+'>X</a></td></tr>';
+        html += '<tr><td>'+cart[i].id+'</td><td>'+cart[i].name+'</td><td><input type="number" class="qty" name="qty" min="1" data-pid='+cart[i].id+' value="'+cart[i].qty+'"></td><td><a href="#" class="delete" data-pid='+cart[i].id+'>X</a></td></tr>';
     }   
 
     html += '</tbody> </table>';
