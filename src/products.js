@@ -35,24 +35,63 @@ $(document).ready(function(){
     //     //this gives me complete value inserted by user 
     //     });
 
+
+
+
+
+
+
     $('#cart').on('keyup','.qty',function(){
         var val = $(this).val();
         var value = parseInt(val);
         var pid = $(this).data('pid');
-        // console.log(value+pid);
+        console.log(value);
+
         updateQuatity(pid,value);
 
         display();
 
+       
+
+    });
+
+
+
+
+
+
+
+    $('#cart').on('click','.update',function(){
+        console.log("update clicked");
+        var pid = $(this).data('pid');
+        // var val = $(this).val();
+        // var value = cart;
+        
+        // updateQuatityByBtn(pid);
+
+        display();
     });
 
 });
+
+// **************** Although it is redundent ****************
+function updateQuatityByBtn(pid){
+    for(var i=0; i<cart.length; i++){
+		if(cart[i].id == pid){//console.log(cart[i].id+" "+pid);
+			cart[i].qty = cart[i].qty;
+
+            console.log("updated cart : "+cart[i].qty);
+		}
+	}
+}
 
 
 function updateQuatity(pid,value){
     for(var i=0; i<cart.length; i++){
 		if(cart[i].id == pid){//console.log(cart[i].id+" "+pid);
 			cart[i].qty = value;
+
+            console.log("updated cart : "+cart[i].qty);
 		}
 	}
 }
@@ -105,6 +144,7 @@ function displayCart(pid){
             <th>Product ID</th>\
             <th>Product(s)</th>\
             <th>Quantity</th>\
+            <th>Update</th>\
             <th>Remove</th>\
         </tr>\
     </thead>\
@@ -115,7 +155,7 @@ function displayCart(pid){
     fetchProduct(pid);
     
     for(var i=0; i<cart.length; i++){               
-        html += '<tr><td>'+cart[i].id+'</td><td>'+cart[i].name+'</td><td><input type="number" class="qty" name="qty" min="1" data-pid='+cart[i].id+' value="'+cart[i].qty+'"></td><td><a href="#" class="delete" data-pid='+cart[i].id+'>X</a></td></tr>';
+        html += '<tr><td>'+cart[i].id+'</td><td>'+cart[i].name+'</td><td><input type="number" class="qty" name="qty" min="1" data-pid='+cart[i].id+' value="'+cart[i].qty+'"></td><td><input type="button" class="update" name="update" data-pid='+cart[i].id+' value="Update"></td><td><a href="#" class="delete" data-pid='+cart[i].id+'>X</a></td></tr>';
     }   
 
     html += '</tbody> </table>';
@@ -145,6 +185,7 @@ function display(){
             <th>Product ID</th>\
             <th>Product(s)</th>\
             <th>Quantity</th>\
+            <th>Update</th>\
             <th>Remove</th>\
         </tr>\
     </thead>\
@@ -155,7 +196,7 @@ function display(){
     // fetchProduct(pid);
     
     for(var i=0; i<cart.length; i++){               
-        html += '<tr><td>'+cart[i].id+'</td><td>'+cart[i].name+'</td><td><input type="number" id="qty" name="qty" min="1" value="'+cart[i].qty+'"></td><td><a href="#" class="delete" data-pid='+cart[i].id+'>X</a></td></tr>';
+        html += '<tr><td>'+cart[i].id+'</td><td>'+cart[i].name+'</td><td><input type="number" id="qty" name="qty" min="1" value="'+cart[i].qty+'"></td><td><input type="button" class="update" name="update" data-pid='+cart[i].id+' value="Update"></td><td><a href="#" class="delete" data-pid='+cart[i].id+'>X</a></td></tr>';
     }   
 
     html += '</tbody> </table>';
